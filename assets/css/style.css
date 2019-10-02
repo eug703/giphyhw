@@ -66,12 +66,22 @@ form{
 }
 
 .giphy{
-    border: 3px solid lightcoral;
+    border: 5px solid lightcoral;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 3px;
+    margin-bottom: 20px;
     page-break-inside: avoid;
+    background-color: lightgray;
+    text-align: center;
 }
 
 .fa-play{
     background-color: lightcoral;
     border-radius: 50%;
     padding: 7px;
+    position: absolute;
+    top: 30%;
+    left: 45%;
 }
