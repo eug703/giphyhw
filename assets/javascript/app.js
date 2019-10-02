@@ -15,28 +15,51 @@ function renderButtons(){
         const buttonName=buttons[i];
         const button = `
             <div class="wrap-buttons">
-                <button  class="btn btn-search" data-name="${buttonName}">${buttonName}</button>
-                <button data-name="${buttonName}" class="btn btn-delete fas fa-hand-middle-finger"></button>
+                <button  
+                    class="btn btn-search" 
+                    data-name="${buttonName}"
+                    >${buttonName}</button>
+
+                <button 
+                    data-name="${buttonName}" 
+                    data-index="${i}"
+                    class="btn btn-delete fas fa-hand-middle-finger"
+                    ></button>
             </div>
         `;
         $(".recent-search").append(button);
     }
-
     localStorage.setItem("buttons", JSON.stringify(buttons));
-
 }
+
 
 loadButtons();
 
 renderButtons();
 
-// draws button balue from search input then renders buttons
-$("#submit-button").on("click", function(event){
-    event.preventDefault();
-    const value = $("#search").val();
+// function called when delete buton click is heard
+function removeButton() {
+    const buttonIndex= $(this).attr('data-index');
+    buttons.splice(buttonIndex, 1);
+    renderButtons();
+}
+
+
+function addButton(value){
     buttons.push(value);
     renderButtons();
+}
 
+function searchGiphy(){
+    event.preventDefault();
+    const value = $("#search").val();
+    addButton(value);
     console.log("value: ",value);
-});
+}
+
+// Event listeners section
+// delete gif on button click
+$(document).on('click', '.btn-delete', removeButton);
+// draws button Value from search input then renders buttons on click
+$("#submit-button").on("click", searchGiphy);
 

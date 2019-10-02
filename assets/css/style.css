@@ -6,9 +6,12 @@ h1{
     font-size: 30px;
     text-align: center;
     margin: 20px 20px;
-    text-shadow: 5px 5px violet;
+    margin-bottom: 35px;
+    color: lightcoral;
+    font-weight: bolder;
+    text-shadow: 15px 20px lightsalmon;
 }
-
+15
 form{
     display: flex;
     justify-content: flex-start;
