@@ -50,3 +50,28 @@ form{
     background-color: gray;
     border: 2px solid lightgray;
 }
+
+
+.giphy-content{
+    column-count: 3;
+    column-gap: 5px;
+
+}
+
+.giphy img{
+
+    width: 100%;
+    height: 100%;
+
+}
+
+.giphy{
+    border: 3px solid lightcoral;
+    page-break-inside: avoid;
+}
+
+.fa-play{
+    background-color: lightcoral;
+    border-radius: 50%;
+    padding: 7px;
+}

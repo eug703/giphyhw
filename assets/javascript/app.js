@@ -55,18 +55,10 @@ function addButton(value){
     renderButtons();
 }
 
-
-function renderGifs(gifs) {
-
-    for(let i=0; i<gifs.length; i++){
-        const gif = gifs[i];
-
-        const images = gif.images;
-        
-        const gifTemplate = `
+function createGifTemplate(gif){
+    const images = gif.images;
+    const template = `
     <div class="giphy">
-         <i class="far fa-star favorite" data-id="${gif.id}" data-star="false">
-         </i>
         <div class="giphy-image">
              <img src="${images.original_still.url}" 
              data-still="${images.original_still.url}" 
@@ -77,15 +69,25 @@ function renderGifs(gifs) {
         
         <div class="giphy-info">
             <p>Rating: g</p>
-            <p>Posted A Year Ago</p>
         </div>
 
         <div class="giphy-footer" data-link="${gif.embed_url}"> 
-          <p>Copy Link <i class="fa fa-link"></i></p>
         </div>
    
     </div>
         `;
+
+    return template;
+
+}
+
+function renderGifs(gifs) {
+    $(".giphy-content").empty();
+
+    for(let i=0; i<gifs.length; i++){
+        const gif = gifs[i];
+        
+        const gifTemplate = createGifTemplate(gif)
 
         $('.giphy-content').append(gifTemplate)
         // gif.id
@@ -101,7 +103,7 @@ function fetchGiphy(value){
             // response.data
             const gifs=response.data;
             renderGifs(gifs);
-            console.log('Data: ', data);
+            console.log('Gifs: ', gifs);
 
         })
         .catch(function(error){
