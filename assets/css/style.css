@@ -45,3 +45,8 @@ form{
     border-left: 3px solid lightsalmon;
     border-radius: 0px;
 }
+
+.btn-primary{
+    background-color: gray;
+    border: 2px solid lightgray;
+}

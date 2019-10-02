@@ -1,4 +1,8 @@
 let buttons = ["dogs", "bears", "tigers", "tapirs"];
+const apiKey = "7435ZttG4GupgYRAIB1MBzDFUlioz6o6";
+const endPoint = "http://api.giphy.com/v1/gifs/search?api_key=7435ZttG4GupgYRAIB1MBzDFUlioz6o6"
+
+
 
 // calls stored searches from local storage
 function loadButtons(){
@@ -40,6 +44,7 @@ renderButtons();
 // function called when delete buton click is heard
 function removeButton() {
     const buttonIndex= $(this).attr('data-index');
+    // splice takes out the value of the index position
     buttons.splice(buttonIndex, 1);
     renderButtons();
 }
@@ -50,11 +55,68 @@ function addButton(value){
     renderButtons();
 }
 
-function searchGiphy(){
+
+function renderGifs(gifs) {
+
+    for(let i=0; i<gifs.length; i++){
+        const gif = gifs[i];
+
+        const images = gif.images;
+        
+        const gifTemplate = `
+    <div class="giphy">
+         <i class="far fa-star favorite" data-id="${gif.id}" data-star="false">
+         </i>
+        <div class="giphy-image">
+             <img src="${images.original_still.url}" 
+             data-still="${images.original_still.url}" 
+             data-animate="${images.original.preventDefault}"
+             data-state="still">
+            <i class="fa fa-play img-play"></i>
+         </div>
+        
+        <div class="giphy-info">
+            <p>Rating: g</p>
+            <p>Posted A Year Ago</p>
+        </div>
+
+        <div class="giphy-footer" data-link="${gif.embed_url}"> 
+          <p>Copy Link <i class="fa fa-link"></i></p>
+        </div>
+   
+    </div>
+        `;
+
+        $('.giphy-content').append(gifTemplate)
+        // gif.id
+    }
+
+}
+
+function fetchGiphy(value){
+    const url = endPoint + '&q=' + value;
+
+    $.ajax({url: url})
+        .then(function(response){
+            // response.data
+            const gifs=response.data;
+            renderGifs(gifs);
+            console.log('Data: ', data);
+
+        })
+        .catch(function(error){
+            console.log('Error: ', error);
+        })
+}
+
+
+function searchGiphy(event){
     event.preventDefault();
     const value = $("#search").val();
     addButton(value);
-    console.log("value: ",value);
+    fetchGiphy(value);
+
+
 }
 
 // Event listeners section
