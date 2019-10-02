@@ -1,0 +1,44 @@
+body{
+    background-color: lightcyan;
+}
+
+h1{
+    font-size: 30px;
+    text-align: center;
+    margin: 20px 20px;
+    text-shadow: 5px 5px violet;
+}
+
+form{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.wrap-buttons{
+    width: 120px;
+    background-color: lightcoral;
+    color: green;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.recent-search{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 20px 0px;
+}
+
+.wrap-buttons{
+    border: 3px solid lightsalmon;
+    border-radius: 2px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.btn-delete{
+    border-left: 3px solid lightsalmon;
+    border-radius: 0px;
+}
