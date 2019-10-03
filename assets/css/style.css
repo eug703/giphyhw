@@ -84,4 +84,10 @@ form{
     position: absolute;
     top: 30%;
     left: 45%;
+    opacity: 0;
 }
+
+.giphy-image:hover .img-play{
+    opacity: 1;
+}
+
