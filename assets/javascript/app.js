@@ -39,10 +39,10 @@ $(document).ready(function(){
         localStorage.setItem("buttons", JSON.stringify(buttons));
     }
 
-
-    loadButtons();
-
     renderButtons();
+    loadButtons();
+    
+
 
     // function called when delete buton click is heard
     function removeButton() {
